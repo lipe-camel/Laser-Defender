@@ -5,16 +5,13 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class EnemyPathing : MonoBehaviour
 {
-    [SerializeField][Tooltip("Choose the Scriptable Object to get the waypoints.")] WaveConfig waveConfig;
-    
+    WaveConfig waveConfig;    
     List<Transform> waypoints;
     int waypointIndex = 0;
-    float moveSpeed = 2f;
 
     void Start()
     {
         waypoints = waveConfig.GetWaypoints();
-        moveSpeed = waveConfig.GetMoveSpeed();
     }
 
     // Update is called once per frame
@@ -23,14 +20,19 @@ public class EnemyPathing : MonoBehaviour
         Move();
     }
 
+    public void SetWaveConfig(WaveConfig waveConfigToFollow) //to push the WaveConfig from a SerializeField from another script
+    {
+        this.waveConfig = waveConfigToFollow;
+    }
+
     private void Move()
     {
-        if (waypointIndex <= waypoints.Count - 1)
+        if (waypointIndex <= waypoints.Count - 1) //if hasn't finished the path
         {
             var targetPosition = waypoints[waypointIndex];
-            var movementThisFrame = moveSpeed * Time.deltaTime;
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition.position, movementThisFrame);
-            if (transform.position == targetPosition.position)
+            var movementThisFrame = waveConfig.GetMoveSpeed() * Time.deltaTime; //speed of movement
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition.position, movementThisFrame); //make it move
+            if (transform.position == targetPosition.position) //move to next waypoint
             {
                 waypointIndex++;
             }
