@@ -31,15 +31,12 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int enemyCount = 1; enemyCount <= waveConfig.GetNumberOfEnemies(); enemyCount++)
         {
-            var enemy = Instantiate(waveConfig.GetEnemyPrefab(), waveConfig.GetWaypoints()[0].position, Quaternion.identity);
+            var enemy = Instantiate
+                (waveConfig.GetEnemyPrefab(),
+                waveConfig.GetWaypoints()[0].position,
+                Quaternion.identity);
             enemy.GetComponent<EnemyPathing>().SetWaveConfig(waveConfig); //to make the EnemyPathing script reckonize the waveConfig in SerializeField
             yield return new WaitForSeconds(waveConfig.GetTimeBetweenSpawns());
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
