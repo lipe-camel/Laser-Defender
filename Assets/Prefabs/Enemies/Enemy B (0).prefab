@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 6484477003348137632}
   - component: {fileID: 6484477003348137633}
   - component: {fileID: 6484477003348137647}
-  - component: {fileID: 6484477003348137634}
+  - component: {fileID: 354274574505164586}
   - component: {fileID: 3649701743824873517}
   - component: {fileID: -2131462785525185011}
   m_Layer: 0
   m_Name: Enemy B (0)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,8 +106,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &6484477003348137634
-PolygonCollider2D:
+--- !u!58 &354274574505164586
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -120,35 +120,8 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.7321428}
-    newSize: {x: 1.6607143, y: 1.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.5357143, y: -0.18750001}
-      - {x: 0.5357143, y: 0.0625}
-      - {x: 0.58928573, y: 0.24107143}
-      - {x: 0.75000006, y: 0.49107146}
-      - {x: 0.75000006, y: 0.86607146}
-      - {x: 0.5357143, y: 0.86607146}
-      - {x: 0.23214287, y: 0.79464287}
-      - {x: -0.5714286, y: 0.54464287}
-      - {x: -0.60714287, y: 0.49107146}
-      - {x: -0.75000006, y: 0.2589286}
-      - {x: -0.75000006, y: -0.24107143}
-      - {x: -0.6607143, y: -0.33035716}
-      - {x: -0.60714287, y: -0.5089286}
-      - {x: -0.5357143, y: -0.54464287}
-      - {x: 0.5714286, y: -0.86607146}
-      - {x: 0.75000006, y: -0.86607146}
-      - {x: 0.75000006, y: -0.49107146}
-      - {x: 0.60714287, y: -0.2589286}
+  serializedVersion: 2
+  m_Radius: 0.71
 --- !u!114 &3649701743824873517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,3 +149,6 @@ MonoBehaviour:
   health: 500
   laserPrefab: {fileID: 9058172065481143116, guid: 24cc6969f9a5e8e4ea27bd8186c26f51,
     type: 3}
+  laserOffset: 1
+  laserSpeed: 20
+  timeBetweenShots: 2

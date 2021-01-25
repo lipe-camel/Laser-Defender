@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
 
     private void ManageDamage(DamageDealer damageDealer)
     {
-        health = health - damageDealer.GetDamage();
+        health -= damageDealer.GetDamage();
         damageDealer.Hit();
         if (health <= 0)
         {

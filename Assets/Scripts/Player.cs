@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] float moveSpeed = 10f;
-    [SerializeField] [Range(0 ,1)] float limitMinX = 0f;
+    [SerializeField] [Range(0, 1)] float limitMinX = 0f;
     [SerializeField] [Range(0, 1)] float limitMaxX = 1f;
     [SerializeField] [Range(0, 1)] float limitMinY = 0f;
     [SerializeField] [Range(0, 1)] float limitMaxY = 1f;
@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     [SerializeField] float laserOffset = 1f;
     [SerializeField] float laserSpeed = 20f;
     [SerializeField] float projectileFiringPeriod = 0.5f;
+    [Header("Health")]
+    [SerializeField] int health = 1000;
 
     Coroutine firingCoroutine;
     float xMin;
@@ -27,7 +29,6 @@ public class Player : MonoBehaviour
     {
         SetUpMoveBoundaries();
     }
-
 
     void Update()
     {
@@ -46,6 +47,7 @@ public class Player : MonoBehaviour
             StopCoroutine(firingCoroutine);
         }
     }
+
     IEnumerator FireContinuously()
     {
         while (true)
@@ -67,6 +69,7 @@ public class Player : MonoBehaviour
         var newYPos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
         transform.position = new Vector2(newXPos, newYPos);
     }
+
     private void SetUpMoveBoundaries()
     {
         Camera gameCamera = Camera.main;
@@ -75,5 +78,18 @@ public class Player : MonoBehaviour
         yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, limitMinY, 0)).y;
         yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, limitMaxY, 0)).y;
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy Projectile")
+        {
+            DamageDealer damageDealer = collision.gameObject.GetComponent<DamageDealer>();
+            health -= damageDealer.GetDamage();
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }
