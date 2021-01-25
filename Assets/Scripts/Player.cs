@@ -82,14 +82,12 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Enemy Projectile")
+        DamageDealer damageDealer = collision.gameObject.GetComponent<DamageDealer>();
+        health -= damageDealer.GetDamage();
+        damageDealer.Hit();
+        if (health <= 0)
         {
-            DamageDealer damageDealer = collision.gameObject.GetComponent<DamageDealer>();
-            health -= damageDealer.GetDamage();
-            if (health <= 0)
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
     }
 }

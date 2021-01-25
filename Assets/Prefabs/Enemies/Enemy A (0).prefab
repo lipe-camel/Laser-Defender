@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 3696452946361987292}
   - component: {fileID: 3649701743824873517}
   - component: {fileID: -5944566986150318}
-  m_Layer: 0
+  - component: {fileID: -5502582731250365090}
+  m_Layer: 9
   m_Name: Enemy A (0)
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,7 +117,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -152,3 +153,16 @@ MonoBehaviour:
   laserOffset: 1
   laserSpeed: 20
   timeBetweenShots: 2
+--- !u!114 &-5502582731250365090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6484477003348137635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3bca8edbe9e3184493d5b6caf05a8ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 100

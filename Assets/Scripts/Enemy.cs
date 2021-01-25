@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Projectile") //player laser
+        if (collision.gameObject.tag == "Projectile")
         {
             DamageDealer damageDealer = collision.gameObject.GetComponent<DamageDealer>();
             ManageDamage(damageDealer);
