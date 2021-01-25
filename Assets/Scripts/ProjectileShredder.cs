@@ -7,7 +7,7 @@ public class ProjectileShredder : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Projectile")
+        if (collision.gameObject.tag == "Projectile" ||  collision.gameObject.tag== "Enemy Projectile")
         {
             Destroy(collision.gameObject);
         }

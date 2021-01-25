@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     [Header("Projectile")]
     [SerializeField] GameObject laserPrefab;
     [SerializeField] float laserOffset = 1f;
-    [SerializeField] float laserVelocity = 10f;
+    [SerializeField] float laserSpeed = 20f;
     [SerializeField] float projectileFiringPeriod = 0.5f;
 
     Coroutine firingCoroutine;
@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
             GameObject laser = Instantiate(laserPrefab,
                 transform.position + new Vector3(laserOffset, 0, 0),
                 Quaternion.identity) as GameObject;
-            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(laserVelocity, 0);
+            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(laserSpeed, 0);
             yield return new WaitForSeconds(projectileFiringPeriod);
 
         }

@@ -36,7 +36,8 @@ public class EnemySpawner : MonoBehaviour
                 waveConfig.GetWaypoints()[0].position,
                 Quaternion.identity);
             enemy.GetComponent<EnemyPathing>().SetWaveConfig(waveConfig); //to make the EnemyPathing script reckonize the waveConfig in SerializeField
-            yield return new WaitForSeconds(waveConfig.GetTimeBetweenSpawns());
+            float randomTime = Random.Range(0, waveConfig.GetSpawnRandomFactor());
+            yield return new WaitForSeconds(waveConfig.GetTimeBetweenSpawns() + randomTime);
         }
     }
 }
